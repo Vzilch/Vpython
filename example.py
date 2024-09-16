@@ -1,11 +1,11 @@
 import V
 import time
 
-def arandom():
+def afunc():
     scr = V.ipo()
-    out = "g"
+    out = ""
     arr = scr.windowlist()
-    string = "my name is \n who know\n i know\n it is \nv\nstar..."
+    string = "this is example code..."
     a = 20
     b = 30
     for i in range(40):
