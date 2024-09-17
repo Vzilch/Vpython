@@ -20,11 +20,7 @@ class ipo:
 
     #clearscreen
     def cls(self):
-        a = self.l
-        clear = ""
-        while a > 0:
-            print("")
-            a -= 1
+        print("\n" * (self.l - 1))
 
     #Nav function for IPO, I>P
     def usrwait(self, prompt = "Continue"):
@@ -42,14 +38,10 @@ class ipo:
         letters_str = " AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
         bodmas_str = "()^/*+-"
         
-        onum = []
-        ochar = []
-        obod = []
+        gen = []
         stringlen = len(string)
         while stringlen > 0:
-            onum += [None]
-            obod += [None]
-            ochar += [None]
+            gen += [None]
             stringlen -= 1
         
         oindex = 0
@@ -57,26 +49,24 @@ class ipo:
             index = 0
             for x in base10_str:
                 if i == x:
-                    onum[oindex] = [nums[index], index, "number"]
+                    gen[oindex] = [nums[index], index, "number"]
                     oindex += 1
                 index += 1
 
             index = 0
             for x in letters_str:
                 if i == x:
-                    ochar[oindex] = [i, index, "letter"]
+                    gen[oindex] = [i, index, "ascii"]
                     oindex += 1
                 index += 1
 
             index = 0
             for x in bodmas_str:
                 if i == x:
-                    obod[oindex] = [i, index, "bodmas"]
+                    gen[oindex] = [i, index, "bodmas"]
                     oindex += 1
                 index += 1
-
-            olist = [onum, ochar, obod]
-        return olist
+        return gen
 
     #list generator, G
     def nlist(self, length = 1, depth = 1, ns = 1):
@@ -189,31 +179,40 @@ class ipo:
     #concatenates list if lists of chars into one string, P>O
     def o(self, a = [], typ = 0):
         out = ""
+        index = 0
         for i in a:
             for x in i:
                 out += x
+                
+            if index == self.l - 1:
+                break
+            
             out += "\n"
-        if typ == 0:
-            print(out)
-        else:
+            index += 1
+        
+        if typ == 1:
             return out
+        else:
+            print(out)
 
     #adds a sequence of chars to a list of lists, P
-    def vinserts(self, iterable = "", x = 1, y = 1, lis = []):
+    def vinsert(self, iterable = "", x = 1, y = 1, lis = [], typ = "", fill = " "):
         l = self.l
         w = self.w
 
+        if typ == "del":
+            iterable = fill[0] * len(iterable)
+
         for item in iterable:
-            lis[y][x] = item
-            #print(y, x, lis[y][x])
             if x >= w:
                 x = 0
                 y += 1
-            if y >= l:
-                y = 0
-            
+            if y >= l or y <= -l:
+                continue
+            lis[y][x] = item
+            #print(y, x, lis[y][x])
             x += 1
-
+        
 
     #queue displacement, P
     def dis(self, a = [], typ = 0):
