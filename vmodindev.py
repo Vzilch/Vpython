@@ -1,5 +1,4 @@
 #vmod_indev
-#basic functions for a window (object)
 
 
 class window:
