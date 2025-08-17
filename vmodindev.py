@@ -2,9 +2,7 @@ class window:
         def __init__(self, x, y):
                 self.x = x
                 self.y = y
-                self.arr = [[["","","",""]] * self.x] * self.y
-                                                                                def scr(self):
-                return [[["","","",""]] * self.x] * self.y              
+                self.arr = [[["","","",""]] * self.x] * self.y             
         def update_pt(self, x = int, y = int, hex = str):
                 self.arr[y][x][0] = hex[1:3]
                 self.arr[y][x][1] = hex[3:5]
